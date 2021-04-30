@@ -1,6 +1,14 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculadora {
+
+	/*
+	* Cambios propuestos por lucgome10:
+	* Cambiar el nombre del método multi() a multiplicar()
+	* Envolver el código del método main en un bloque try{}catch para poder recoger excepciones 
+	* por introducir datos incorrectos. 
+	*/
 
 	
 	public static void main(String[] args) {
@@ -8,7 +16,8 @@ public class Calculadora {
 		Scanner sc2 =new Scanner(System.in);
 		String respuesta="";
 		
-		Calculadora calc = new Calculadora();
+		try {
+			Calculadora calc = new Calculadora();
 		do {
 			System.out.println("Elija una opción \n1) sumar \n2) restar \n3) multiplicar \n4) dividir");
 			int opcion=sc.nextInt();
@@ -20,7 +29,7 @@ public class Calculadora {
 				calc.restar();
 				break;
 			case 3:
-				calc.multi();
+				calc.multiplicar();
 				break;
 			case 4:
 				calc.dividir();
@@ -39,6 +48,10 @@ public class Calculadora {
 			
 			
 		}while(respuesta.equalsIgnoreCase("s"));
+		} catch (InputMismatchException e) {
+			System.out.println("No has introducido un valor correcto. Saliendo de calculadora.");
+		}
+		
 
 		sc.close();
 		sc2.close();
@@ -79,7 +92,7 @@ public class Calculadora {
 	/**
 	 * Método que imprime por pantalla la multiplicación de 2 números
 	 */
-	public void multi() {
+	public void multiplicar() {
 		Calculadora calc = new Calculadora();
 		int num1=calc.pideNumero(); 
 		int num2=calc.pideNumero();
